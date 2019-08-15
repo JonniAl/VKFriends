@@ -1,0 +1,48 @@
+POST http://localhost:4000/token
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:4000/token
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:4000/token
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-08-14T043045.200.json
+
+###
+
+GET http://localhost:4000/token
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-08-14T013149.200.json
+
+###
+
+GET http://localhost:3000/token
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:3000/token
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:4000/token
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-08-14T013059.200.json
+
+###
+
