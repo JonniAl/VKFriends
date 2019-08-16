@@ -8,9 +8,9 @@ class App extends React.Component {
   render() {
     return(
         <Router>
-          <div className="App">
+          <React.Fragment>
              <Route exact path="/" render={(props) => (<Index {...props} cookies={this.props.cookies}/>)} />
-          </div>
+          </React.Fragment>
         </Router>
     )}
 }

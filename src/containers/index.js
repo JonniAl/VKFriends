@@ -69,9 +69,12 @@ class Index extends React.Component {
         const { access_token } = this.props.auth;
 
         return (
-            <div>
+            <div style={{height: "100%"}}>
                 {(access_token === '') ?
-                    <a href="https://oauth.vk.com/authorize?client_id=7095668&display=popup&redirect_uri=https://webim-test-app.herokuapp.com&scope=friends&response_type=code&v=5.101"><Button type="primary">Авторизироваться</Button></a> : <FriendsCards friends={this.props.friends}/> }
+                    <a href="https://oauth.vk.com/authorize?client_id=7095668&display=popup&redirect_uri=https://webim-test-app.herokuapp.com&scope=friends&response_type=code&v=5.101">
+                        <Button type="primary">Авторизироваться</Button>
+                    </a>
+                    : <FriendsCards friends={this.props.friends}/> }
             </div>
         )
     }
