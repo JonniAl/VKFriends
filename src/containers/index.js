@@ -41,14 +41,14 @@ class Index extends React.Component {
         const data = {
             client_id: 7095668,
             client_secret: 'NrRMgsFGoe7LhWyqTYXK',
-            redirect_url: 'http://localhost:3000',
+            redirect_url: 'https://webim-test-app.herokuapp.com',
             code: code,
         };
 
         /** Получаем access_token и другую информацию, для выполнения запросов к API VK*/
 
         if (code !== "") {
-            const answer = await axios.post(`http://localhost:4000/token`, data)
+            const answer = await axios.post(`https://webim-test-app.herokuapp.com:4000/token`, data)
                 .then((response) => response.data)
                 .catch((error) => {
                     console.log(error);
@@ -71,7 +71,7 @@ class Index extends React.Component {
         return (
             <div>
                 {(access_token === '') ?
-                    <a href="https://oauth.vk.com/authorize?client_id=7095668&display=popup&redirect_uri=http://localhost:3000&scope=friends&response_type=code&v=5.101"><Button type="primary">Авторизироваться</Button></a> : <FriendsCards friends={this.props.friends}/> }
+                    <a href="https://oauth.vk.com/authorize?client_id=7095668&display=popup&redirect_uri=https://webim-test-app.herokuapp.com&scope=friends&response_type=code&v=5.101"><Button type="primary">Авторизироваться</Button></a> : <FriendsCards friends={this.props.friends}/> }
             </div>
         )
     }
