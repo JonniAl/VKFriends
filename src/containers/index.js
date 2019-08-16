@@ -10,6 +10,8 @@ import FriendsCards from "./FriendsCards";
 
 class Index extends React.Component {
 
+    /** Метод для получения списка друзей*/
+
     async getFriendsVK(access_token, user_id) {
         return await jsonp(`https://api.vk.com/method/friends.get?access_token=${access_token}&user_id=${user_id}&order=random&count=5&fields=photo_200,online&v=5.101`, null, (err, data) => {
             if (err) {
@@ -22,15 +24,19 @@ class Index extends React.Component {
 
     async componentDidMount() {
 
-        /** Если Cookie не заданы, задаем их и получаем список друзей*/
+        /** Если Cookie заданы, получаем список друзей*/
         const cookieAuth = this.props.cookies.get('authUser');
-        if(this.props.cookies.get('authUser') !== undefined) {
+        if (cookieAuth !== undefined && cookieAuth !== '') {
+            /** Добавляем наши Cookie в Store Redux*/
             this.props.setAuthData(cookieAuth);
             await this.getFriendsVK(cookieAuth.access_token, cookieAuth.user_id);
             return;
         }
 
         if (this.props.location.search === "") return;
+        /** Берем значение параметра code из URL
+         * this.props.location.search возращает нам ? и дальнейшие параметры.
+         * Нам же нужно взять подстроку, чтобы получить значение параметра code.*/
         const code = this.props.location.search.substring(6, this.props.location.search.length);
         const data = {
             client_id: 7095668,
@@ -48,11 +54,11 @@ class Index extends React.Component {
                     console.log(error);
                 });
             this.props.history.push("/");
-
+            if (answer === undefined) return;
             /** Задаем значения Cookie*/
-            this.props.cookies.set('authUser', answer, { path:'/'});
+            this.props.cookies.set('authUser', answer, { path:'/', maxAge: answer.expires_in});
+            /** Добавляем данные в Store Redux*/
             this.props.setAuthData(answer);
-
             /** Получаем список друзей из VK*/
             await this.getFriendsVK(answer.access_token, answer.user_id);
         }

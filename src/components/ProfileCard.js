@@ -15,7 +15,7 @@ class ProfileCard extends React.Component {
 
         return (
             <div className="profile-card">
-                <a target="_blank"  href={vkPage}>
+                <a target="_blank" rel="noopener noreferrer" href={vkPage}>
                     <Card
                         hoverable
                         style={{width: 220}}
