@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "yarn add && yarn build"
+    "build": "yarn install && yarn build"
   },
   "eslintConfig": {
     "extends": "react-app"
