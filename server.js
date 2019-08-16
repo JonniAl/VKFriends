@@ -6,6 +6,7 @@ const path = require('path');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -21,8 +22,6 @@ const getAccessToken = async (client_id, client_secret, redirect_url, code) => {
             })
     )
 };
-
-
 
 // An api endpoint that returns a short list of items
 app.post('/token', async (req, res) => {

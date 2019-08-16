@@ -36,7 +36,7 @@ class Index extends React.Component {
         if (this.props.location.search === "") return;
         /** Берем значение параметра code из URL
          * this.props.location.search возращает нам ? и дальнейшие параметры.
-         * Нам же нужно взять подстроку, чтобы получить значение параметра code.*/
+         * Нам нужно взять подстроку, чтобы получить значение параметра code.*/
         const code = this.props.location.search.substring(6, this.props.location.search.length);
         const data = {
             client_id: 7095668,
@@ -48,7 +48,7 @@ class Index extends React.Component {
         /** Получаем access_token и другую информацию, для выполнения запросов к API VK*/
 
         if (code !== "") {
-            const answer = await axios.post(`https://webim-test-app.herokuapp.com:4000/token`, data)
+            const answer = await axios.post(`https://webim-test-ex.herokuapp.com/token`, data)
                 .then((response) => response.data)
                 .catch((error) => {
                     console.log(error);
